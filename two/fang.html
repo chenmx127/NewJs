@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 500px;
+            height: 400px;
+            position: relative;
+            margin: 0 100px;
+        }
+        .box1 {
+            width: 260px;
+            background: #ff0;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 600px;
+            overflow: hidden;
+            display: none;
+        }
+        img {
+            vertical-align: top;
+        }
+        span {
+            display: block;
+            width: 100px;
+            height: 90px;
+            background: rgba(17, 11, 11, 0.534);
+            position: absolute;
+            display: none;
+            cursor: move;
+        }
+        .im {
+            width: 100%;
+            height: 100%;
+        }
+        .im1 {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/sm.jpg" alt="" class="im">
+        <span></span>
+    </div>
+    <div class="box1">
+        <img src="images/big.jpg" alt="" class="im1">
+    </div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var sp = document.querySelector('span');
+    var box1 = document.querySelector('.box1');
+    var im1 = document.querySelector('.im1');
+    box.onmouseenter = function(e){
+        sp.style.display = 'block';
+        box1.style.display = 'block';
+        box.onmousemove = function(e){
+            var wx = box.offsetWidth - sp.offsetWidth;
+            var wy = box.offsetHeight - sp.offsetHeight;
+            var Wy = im1.offsetHeight - box1.offsetHeight;
+            var Wx = im1.offsetWidth - box1.offsetWidth;
+            var x = e.clientX - box.offsetLeft - sp.offsetWidth / 2;
+            var y = e.clientY - sp.offsetHeight / 2;
+            if(x <= 0) {
+                x = 0;
+            }else if(x > box.offsetWidth - sp.offsetWidth) {
+                x = box.offsetWidth - sp.offsetWidth;
+            }
+            if (y <= 0) {
+                y = 0;
+            } else if (y > box.offsetHeight - sp.offsetHeight){
+                y = box.offsetHeight - sp.offsetHeight;
+            }
+            sp.style.left = x + 'px';
+            sp.style.top = y + 'px';
+            im1.style.left = -x * Wx / wx + 'px';
+            im1.style.top = -y* Wy / wy + 'px';
+            box.onmouseleave = function(){
+                sp.style.display = 'none';
+                box1.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            float: left;
+            margin-right: 20px;
+        }
+        .box {
+            width: 1060px;
+            height: 300px;
+            background-color: #ccc;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .imgs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 7000px;
+            height: 150px;
+            overflow: hidden;
+        }
+        li:last-child {
+            margin-right: 0;
+        }
+        .line {
+            width: 1060px;
+            height: 5px;
+            background: #f00;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+        }
+        span {
+            display: block;
+            border: 1px solid #0ff;
+            width: 139px;
+            height: 28px;
+            background: #fff;
+            position: absolute;
+            top: -12px;
+            left: 0;
+            box-sizing: border-box;
+            text-align: center;
+            cursor: pointer;
+            color: #999;
+            font-size: 12px;
+            line-height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="imglist">
+            <ul class="imgs">
+                <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/6.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/7.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/8.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/9.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/10.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/11.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/12.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/13.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/14.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/15.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/16.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/17.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/18.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/19.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/20.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/21.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/22.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/23.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/24.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/25.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/26.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/27.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/28.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/29.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/30.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="line"><span>拖动&gt;&gt;&gt;</span></div>
+    </div>
+</body>
+<script>
+    var sp = document.querySelector('span');
+    var line = document.querySelector('.line');
+    var imgs = document.querySelector('.imgs');
+    var imgw = (imgs.children.length - 1)*(imgs.children[0].offsetWidth + 20) + imgs.children[0].offsetWidth;
+    imgs.style.width = imgw + 'px';
+    var box = document.querySelector('.box');
+    var w = line.offsetWidth - sp.offsetWidth;
+    var ww = imgw - box.offsetWidth;
+    var WW = line.offsetWidth - sp.offsetWidth;
+    sp.onmousedown = function(e){
+        var x = e.offsetX;
+        document.onmousemove = function(e){
+        var X = e.clientX - box.offsetLeft - x;
+            X = X < 0 ? 0 : X;
+            X = X > w ? w : X;
+            sp.style.left = X + "px";
+            imgs.style.left = -X * ww / WW + 'px';
+        }
+    }
+    document.onmouseup = function(){
+        this.onmousemove = null;
+    }
+    line.onclick = function(e){
+        var x = e.clientX - box.offsetLeft;
+        x = x > w ? w : x;
+        sp.style.left = x + 'px';
+        imgs.style.left = -x * ww / WW + 'px';
+    }
+</script>
+</html>

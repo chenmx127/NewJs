@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var n = parseInt(Math.random()*101);
+    console.log(n)
+    var num = parseInt(prompt('请输入1~100中任意一个数：'));
+    while(num >= 0 && num <= 100){
+        if(num < n){
+            num = parseInt(prompt('请输入1~'+ num +'中任意一个数：'));        
+        }else if(num > n) {
+            num = parseInt(prompt('请输入' + num +'~100中任意一个数：'))
+        }else {
+            alert('恭喜你踩中了地雷！！')
+            break;
+        }
+    }
+
+
+
+
+    
+</script>
+</html>
