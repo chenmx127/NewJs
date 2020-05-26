@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* 1.求1!+2!+3!+4!+...+10!的和。 */
+    /* function jc(n){
+        if(n == 0) {
+            return 1;
+        }
+        return n*jc(n - 1);
+    }
+    var sum = 0;
+    for(var i = 1; i <= 10; i++){
+        sum += jc(i);
+    }
+    console.log(sum); */
+
+    /* 2.求一个三位数，该三位数等与其每位数字的阶乘之和 153 = 1!+5!+3!; */
+    // var num = parseInt(prompt('请输入一个三位数'));
+    /* var a = 0,b = 0,c = 0,num = 0;
+    function jc(n){
+        if (n == 0) {
+            return 1;
+        }
+        return n * jc(n - 1);
+    }
+    for(var i = 100; i < 200;i++){
+        a = parseInt(i % 10);
+        b = parseInt(i % 100 / 10);
+        c = parseInt(i / 100);
+        num = jc(c) + jc(b) + jc(a);
+        if(i == num) {
+            console.log('这个三位数为：' + i);
+        }
+    } */
+
+    /* 3.数字倒置 */
+    /* var num = parseInt(prompt('请输入一个数：'))
+    //console.log(num);
+    function rev(str){
+        // str = typeof str != "string" && str + ""
+        str = !(new String(str) instanceof String) && str+""
+
+        // if (typeof str != "string") {
+        //     str= str + ""
+        // }
+        return str.split('').reverse().join('');
+    }
+    var str1 = rev(num);
+    console.log(str1); */
+     
+    /* var num = parseInt(prompt('请输入一个数：'))
+    var rev = function(num){
+        var arrs = [];  
+        var str = typeof num != "string" && num + ""; 
+        for(var i = str.split('').length - 1; i >=0; i--){
+            arrs.push(str.split('')[i]);
+        }
+       return arrs.join('');
+    }
+    var str1 = rev(num);
+    console.log(parseInt(str1)); */
+
+    /*var num = parseInt(prompt('请输入一个数：'))
+    var rev = function (num) {
+        var arrs = [];
+        var str = typeof num != "string" && num + "";
+        str.split('').forEach(function(v,i,arr){
+            arrs.push(arr[arr.length - 1 - i]);
+        })
+        return arrs.join("");
+    }
+    var str1 = rev(num);
+    console.log(parseInt(str1)); */
+
+    /* var num = parseInt(prompt('请输入一个数：'))
+    var rev = function (num) {
+        var str1 = '';
+        var str = typeof num != "string" && num + "";
+        str.split('').forEach(function(v,i,arr){
+            str1 = str1 + arr[arr.length - 1 - i];
+        })
+        return str1;
+    }
+    var str1 = rev(num);
+    console.log(parseInt(str1)); */
+
+    /* var num = parseInt(prompt('请输入一个数：'))
+    var rev = function (num) {
+        var str = typeof num != "string" && num + "";
+        var ss = '';
+        for( var i = str.length -1; i >= 0; i--){
+            ss = ss + str.charAt(i); 
+        }
+        return ss;
+    }
+    var str1 = rev(num);
+    console.log(parseInt(str1)); */
+
+    /* 4.约数 */
+    var x = parseInt(prompt("请输入一个正整数"));
+    var y = parseInt(prompt("请输入一个正整数"));
+    function ys(x,y){
+        var m = 0,m1 = 0;
+		for(i = x ; i >= 1 ; i--){
+			if(x % i == 0){   
+                if( x != i){
+                    console.log(i)
+                    m = m + i;
+                }
+			}
+		}
+        for(var j = y; j >= 1;j--){
+            if(y % j == 0){
+                 if (y != j) {
+                    console.log(j)
+                    m1 = m1 + j;       
+                }
+            }
+        }
+        console.log(m,m1);
+    }
+
+
+
+</script>
+</html>
