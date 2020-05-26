@@ -32,7 +32,7 @@
         }
         return n * jc(n - 1);
     }
-    for(var i = 100; i < 200;i++){
+    for(var i = 100; i <= 999;i++){
         a = parseInt(i % 10);
         b = parseInt(i % 100 / 10);
         c = parseInt(i / 100);
@@ -43,6 +43,8 @@
     } */
 
     /* 3.数字倒置 */
+    
+    // 方法一：
     /* var num = parseInt(prompt('请输入一个数：'))
     //console.log(num);
     function rev(str){
@@ -56,7 +58,8 @@
     }
     var str1 = rev(num);
     console.log(str1); */
-     
+
+    //  方法二：
     /* var num = parseInt(prompt('请输入一个数：'))
     var rev = function(num){
         var arrs = [];  
@@ -69,6 +72,7 @@
     var str1 = rev(num);
     console.log(parseInt(str1)); */
 
+    // 方法三：
     /*var num = parseInt(prompt('请输入一个数：'))
     var rev = function (num) {
         var arrs = [];
@@ -81,6 +85,7 @@
     var str1 = rev(num);
     console.log(parseInt(str1)); */
 
+    // 方法四：
     /* var num = parseInt(prompt('请输入一个数：'))
     var rev = function (num) {
         var str1 = '';
@@ -93,6 +98,7 @@
     var str1 = rev(num);
     console.log(parseInt(str1)); */
 
+    // 方法五：
     /* var num = parseInt(prompt('请输入一个数：'))
     var rev = function (num) {
         var str = typeof num != "string" && num + "";
@@ -105,31 +111,39 @@
     var str1 = rev(num);
     console.log(parseInt(str1)); */
 
-    /* 4.约数 */
-    var x = parseInt(prompt("请输入一个正整数"));
-    var y = parseInt(prompt("请输入一个正整数"));
-    function ys(x,y){
-        var m = 0,m1 = 0;
-		for(i = x ; i >= 1 ; i--){
-			if(x % i == 0){   
-                if( x != i){
-                    console.log(i)
-                    m = m + i;
-                }
-			}
-		}
-        for(var j = y; j >= 1;j--){
-            if(y % j == 0){
-                 if (y != j) {
-                    console.log(j)
-                    m1 = m1 + j;       
-                }
-            }
+    // 方法六：
+    /* var num = parseInt(prompt('请输入一个数：'));
+    function rev(a){
+        var b = 0;
+        while(a){
+            b = b * 10 + a % 10;
+            a = parseInt(a / 10);
         }
-        console.log(m,m1);
+        return b;
     }
+    console.log(rev(num)); */
+    
+    /* 4.约数 
+    如果整数A的全部约数(包括1,不包括A本身)之和等于B,且整数B的全部约数
+    (包括1,不包括B本身)之和等于A,则称整数A和B是一对亲密数。
+    求3000以内的全部亲密数。*/
 
-
+  /*   function ys(a){
+        var sum = 0;
+		for(i = 1 ; i < a; i++){
+			if(a % i == 0){   
+                sum = sum + i;
+			}
+        }
+        return sum;
+    }
+    for(var A = 1; A <= 3000; A++){
+        var B = ys(A);
+        if(A == ys(B) && A != B){
+            console.log(A,B)  
+        }
+    } */
 
 </script>
 </html>
+
