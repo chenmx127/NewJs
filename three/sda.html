@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -50px;
+			margin-top: -50px;
+		}
+	</style>
+		
+</head>
+<body>
+	<div></div>
+	<ul>
+		
+	</ul>
+</body>
+<!--<script type="text/javascript">
+//		function s(str){
+//			var bb="";
+//			str = str.split("-")
+//			for(var i =1;i< str.length;i++){
+//				bb += str[i].slice(0,1).toUpperCase()+str[i].slice(1);
+//			}
+//			return str[0]+bb;
+//		}
+//		console.log(s("jin-tian-shi-ge-hao-ri-zi"))
+const person = function(){}
+const p1=new person()
+console.log(p1 instanceof person)
+var str ="heds ds";
+console.log(str instanceof String)
+	</script>-->
+	<script type="text/javascript">
+		
+//		console.log(sort(function ss(a,b){
+//			return a-b;
+//		}))
+//	var arr = [12,33,9,24,5,65,43,87,29,10];
+//	var temp;
+//	for(var i=0;i<arr.length-1;i++){ 
+//      for(var j=i+1;j<arr.length;j++){ 
+//          if(arr[i] < arr[j]){
+//              temp = arr[i];
+//              arr[i] = arr[j];
+//              arr[j] = temp;
+//          }
+//      }
+//  }
+//	console.log(arr)
+//	var obj = {
+//		name:"马欣",
+//		age:18
+//	}
+//	var str = `
+//				<li>
+//					<p>${obj.name}</p>
+//					<p>${obj.age}</p>
+//				</li>
+//				`
+//	document.querySelector("ul").innerHTML = str;
+
+//	var arr=[1,2,3,4];
+//	arr.forEach((v,k)=>console.log(v,k));
+//	arr.forEach((v,k)=>{console.log(v);console.log(k)});
+
+//	var {a,b}={a:"小英",b:"小明"}	
+//	console.log(a,b)
+
+//	function fun(){
+//		return {name:"小王"}
+//	}
+//	var {name} = fun();
+//	console.log(name);
+
+//	function fun1(name = "xiao"){
+//		 console.log(name)
+//	}
+//	fun1();
+//	fun1("big")
+
+//	function fun2(a,...rest){
+//			 console.log(a) ;
+//			 console.log(rest)
+//		}
+//	fun2(1);
+//	fun2(1,2,3,4);
+//	fun2(4,3,2,1);
+
+	//面向对象
+	function Point(x,y){
+		this.x=x;
+		this.y=y;
+	}
+	Point.prototype.fun= function() {
+	return "("+this.x+","+this.y +")";
+	}
+	var point=new Point (20,30) ;
+	console.log(point.fun());// (20, 30)
+	
+	class DiyPoint{
+	//里面添加属性
+	//构造方法:不是自定义的在new的时候会自动调用方法
+	//初始化，通常给赋初值，准备工作
+		constructor (x, y) {}
+		fun() {
+			return "(" +this.x+","+this.y +")";
+		}
+	}
+	var diy=new DiyPoint(20,20);
+	console.log(diy.fun());
+
+	
+	
+	
+
+//	class People {
+//		constructor (name) {
+//			this . name=name;
+//		}
+//		showname () {
+//		console. log ("我的名字是"+this .name);
+//		}
+//	}
+//	class Programmer extends People {
+//		constructor (name,age) {
+//			super (name) ;
+//			this. age=age;
+//		}
+//		showAge() {
+//			console. log ("我今年"+this .age+"正在完成程序") ;
+//		}
+//	}
+//	var people=new People ("魏娇") ;
+//	var programmer=new Programmer ("小梅",18);
+//	people.showname();
+//	programmer.showname();
+//	programmer.showAge();
+
+	</script>
+</html>

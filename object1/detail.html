@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.title{
+			text-align: center;
+    		background: palegoldenrod;
+    		line-height: 50px;
+    		margin: 20px -15px;
+    		border-bottom-right-radius: 50px;
+    		border-bottom-left-radius: 50px;
+    	}
+		.item1 img{
+    		margin-top: 15px;
+			width: 100%;
+			height: 400px;
+		}
+		h4{
+			font-size: 30px;
+			font-weight: bold;
+			width: 100%;
+			line-height: 40px;
+			overflow : hidden;
+        	text-overflow: ellipsis;
+        	display: -webkit-box;
+        	-webkit-line-clamp: 2;
+        	-webkit-box-orient: vertical;
+		}
+		p {
+			color: #999;
+			line-height: 40px;
+			font-size: 14px;
+			padding-left: 50px;
+		}
+		.item1{
+			display: flex;
+			justify-content: space-around;
+		}
+		.i_left{
+			margin: 0 50px;
+		}
+		.i_right{
+			margin-right: 50px;
+		}
+		.i_right em{
+			font-size: 18px;
+			color: #000;
+			font-style: normal;
+			padding-left: 20px;
+		}
+		.i_right .em_c{
+			color: #f00;
+			font-size: 26px;
+		}
+		a{
+			color:#f00;
+		}
+		.sale {
+			padding:15px 200px;
+			border: 1px solid #ccc;
+			font-size: 30px;
+			margin-left: 20px;
+		}
+		.sale:hover{
+			color: red;
+		}
+		.nav_h .logo{
+			height: 100%;
+		}
+		.nav_h .navbar-header a{
+			padding: 3px 30px 3px 10px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default container nav_h">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="index.html"><img src="logo.png" class="logo" class="logo"/></a>
+	    </div>
+	
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品<span class="caret"></span></a>
+	          <ul class="dropdown-menu menu1">
+	          </ul>
+	        </li>
+	      </ul>
+	      <form class="navbar-form navbar-left">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="请输入您所需要的商品名" />
+	        </div>
+	        <button type="button" class="btn btn-default">搜索</button>
+	      </form>
+	      
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">个人信息</a></li>
+	            <li><a href="#">个人钱包</a></li>
+	            <li><a href="#">客服咨询</a></li>
+	            <li><a href="#">退出登陆</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="container">
+    	<h1 class="title">商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</h1>
+    	<div class="row box">
+    		
+		</div>
+    </div>
+</body>
+</body>
+<script type="text/javascript">
+	var good_id = decodeURIComponent(location.search.split("=")[1]);
+	if(good_id!=''|| good_id!=undefined || good_id!=null){
+		goods(good_id);
+	}
+	function goods(str){
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/w/website/findGoodsDetail",
+			data:{
+				info:str
+			},
+			success:function(res){
+				console.log(res)
+				var gid = res.data.detail.tbk_item_info_get_response.results.n_tbk_item;
+					$(".box").append(`
+						<div class="item item1">
+							<div class="i_left"><a href="${gid[0].item_url}"><img src="${gid[0].pict_url}"/></a></div>
+							<div class="i_right"><h4>${gid[0].title}</h4>
+							<p>类型:<em>${gid[0].cat_leaf_name}</em></p>
+							<p>商品店铺:<em>${gid[0].nick}</em></p>
+							<p>商品产地:<em>${gid[0].provcity}</em></p>
+							<p>原价:<em>￥${gid[0].reserve_price}</em>元</p>
+							<p>现价:<em class="em_c">￥${gid[0].zk_final_price}</em>元</p>
+							<a href="${gid[0].item_url}" class="sale">购&nbsp;&nbsp;买</button></a>
+							</div>
+						</div>	
+					`)
+				}
+		})
+	};
+	function nav(){
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/w/website/findGoodsTypeList",
+			success:function(res){
+				var nav_n=res.data;
+				for(var i=0;i<nav_n.length;i++){
+					$(".menu1").append(
+						`
+							<li><a href="sort.html?info=${nav_n[i].name}">${nav_n[i].name}</a></li>
+						`
+					)
+				}
+			}
+		});
+	}
+	nav();
+	$("button").click(function(){
+		if($("input").val() != ""){
+			location.href = "sort.html?info="+$('input').val();
+		}
+	})
+	
+</script>
+</html>
